@@ -22,7 +22,7 @@ docker container prune --force
 docker image prune --force
 
 echo "Starting containers"
-docker-compose --env-file ./.env up -d
+docker-compose up -d
 
 echo 'Upgrade migrations'
 docker-compose run nodejs yarn typeorm migration:run
