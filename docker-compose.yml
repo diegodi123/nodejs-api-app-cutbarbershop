@@ -18,7 +18,6 @@ services:
       - ./data_postgres:/var/lib/postgresql/data
     restart: always
     environment:
-      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: docker
     networks:
       - connection
