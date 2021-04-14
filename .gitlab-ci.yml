@@ -1,0 +1,65 @@
+image: node:14.16.0
+
+stages:
+  - test
+  - package
+  - deploy
+cache:
+    paths:
+      - node_modules/
+
+before_script:
+- whoami
+- pwd
+
+test_integration:
+  stage: test
+  before_script:
+    - echo "ok"
+  script:
+    - echo "ok"
+
+vulnerabilities_check:
+  stage: test
+  script:
+    - echo "ok"
+
+package_api:
+  stage: package
+  cache:
+    key: api-package
+    policy: push
+    paths:
+      - node_modules/
+  script:
+    - npm install
+
+deploy_to_develop: &deploy
+  stage: deploy
+  tags:
+    - Runner-teste
+  cache:
+    key: api-package
+    policy: pull
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    #- touch ~/.ssh/config
+    #- '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - bash ./deploy.sh
+  environment:
+    name: develop
+  only:
+   - develop
+
+deploy_to_production:
+  <<: *deploy
+  environment:
+    name: production
+  only:
+   - master
