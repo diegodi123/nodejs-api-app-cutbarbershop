@@ -4,7 +4,7 @@ set -e
 
 DEPLOY_SERVERS=$DEPLOY_SERVERS
 
-.disableHostKeyChecking.sh
+./disableHostKeyChecking.sh
 
 echo "deploying to Digital Ocean production"
 
