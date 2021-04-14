@@ -36,6 +36,8 @@ package_api:
 
 deploy_to_develop: &deploy
   stage: deploy
+  tags:
+    - app-cut-barber-shop-do
   cache:
     key: api-package
     policy: pull
