@@ -8,4 +8,4 @@ ENVIRONMENT=$ENVIRONMENT
 
 echo "deploying to Digital Ocean production"
 
-ssh root@$DEPLOY_SERVERS 'bash' < updateAndRestart.sh
+ssh root@$DEPLOY_SERVERS 'bash' < ./deploymentScripts/updateAndRestart.sh
