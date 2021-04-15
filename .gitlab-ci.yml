@@ -60,6 +60,8 @@ deploy_to_develop: &deploy
 
 deploy_to_production:
   <<: *deploy
+  script:
+    - bash ./deploy-dev.sh
   environment:
     name: production
   only:

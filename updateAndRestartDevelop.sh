@@ -1,17 +1,13 @@
 #!/bin/bash
 
 set -e
-ENVIRONMENT=$ENVIRONMENT
-CI_JOB_ID=$CI_JOB_ID
-echo "Clone the repository ENVIRONMENT=$ENVIRONMENT ou $CI_JOB_ID"
-exit
 
 echo "change dir for aplication"
 cd nodejs-api-app-cutbarbershop/
 
+ENVIRONMENT=$ENVIRONMENT
 
-echo "Clone the repository ENVIRONMENT=$ENVIRONMENT"
-exit
+echo "Clone the repository"
 git pull origin $ENVIRONMENT
 
 echo "Local:"
