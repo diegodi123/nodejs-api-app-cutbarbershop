@@ -4,8 +4,7 @@ set -e
 
 ENVIRONMENT=$ENVIRONMENT
 CI_ENVIRONMENT_NAME=$CI_ENVIRONMENT_NAME
-ls -l
-exit
+
 echo "change dir for aplication"
 cd nodejs-api-app-cutbarbershop-$CI_ENVIRONMENT_NAME/
 
