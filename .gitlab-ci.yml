@@ -12,27 +12,27 @@ before_script:
 - whoami
 - pwd
 
-test_integration:
-  stage: test
-  before_script:
-    - echo "ok"
-  script:
-    - echo "ok"
+# test_integration:
+#   stage: test
+#   before_script:
+#     - echo "ok"
+#   script:
+#     - echo "ok"
 
-vulnerabilities_check:
-  stage: test
-  script:
-    - echo "ok"
+# vulnerabilities_check:
+#   stage: test
+#   script:
+#     - echo "ok"
 
-package_api:
-  stage: package
-  cache:
-    key: api-package
-    policy: push
-    paths:
-      - node_modules/
-  script:
-    - npm install
+# package_api:
+#   stage: package
+#   cache:
+#     key: api-package
+#     policy: push
+#     paths:
+#       - node_modules/
+#   script:
+#     - npm install
 
 deploy_to_develop: &deploy
   stage: deploy
@@ -52,16 +52,15 @@ deploy_to_develop: &deploy
     - touch ~/.ssh/config
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" >> ~/.ssh/config
   script:
-    - bash ./deploy.sh
+    - bash ./updateAndRestart.sh
+    #- bash ./deploy.sh
   environment:
     name: develop
   only:
    - develop
 
-deploy_to_production:
+deploydeploy_to_production:
   <<: *deploy
-  script:
-    - bash ./deploy.sh
   environment:
     name: production
   only:
