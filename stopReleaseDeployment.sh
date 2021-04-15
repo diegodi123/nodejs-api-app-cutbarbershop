@@ -12,5 +12,4 @@ echo "Local:"
 pwd
 
 echo "Stoping containers"
-echo "Stoping containers"
 docker-compose -f docker-compose.release.yml down
