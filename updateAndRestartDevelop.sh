@@ -12,7 +12,7 @@ echo "Local:"
 pwd
 
 echo "Stoping containers"
-docker-compose down
+docker-compose -f docker-compose.develop.yml down
 
 echo "Build image"
 sudo docker build -t diegodi123/cutbarbershop-dockerizado-develop:latest .

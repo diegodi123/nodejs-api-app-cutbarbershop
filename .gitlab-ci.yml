@@ -58,7 +58,26 @@ deploy_to_develop: &deploy
   only:
    - develop
 
-deploydeploy_to_production:
+deploy_to_release: &deploy-release
+  <<: *deploy
+    script:
+    - bash ./deploy-release.sh
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG
+    on_stop: turnoff
+  only:
+    - /^release-.*$/
+
+turnoff:
+  <<: *deploy-release
+  script:
+    - surge teardown ${CNAME}
+  when: manual
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG
+    action: stop
+
+deploy_to_production:
   <<: *deploy
   script:
     - bash ./deploy.sh
