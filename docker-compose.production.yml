@@ -13,7 +13,7 @@ services:
   db:
     image: postgres:13.2-alpine
     ports:
-      - 5432:5432
+      - 5434:5434
     volumes:
       - ./data_postgres:/var/lib/postgresql/data
     restart: always
