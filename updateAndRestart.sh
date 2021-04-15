@@ -2,8 +2,8 @@
 
 set -e
 ENVIRONMENT=$ENVIRONMENT
-CI_JOB_ID=$CI_JOB_ID
-echo "Clone the repository ENVIRONMENT=$ENVIRONMENT ou $CI_JOB_ID"
+CI_COMMIT_BRANCH=$CI_COMMIT_BRANCH
+echo "Clone the repository ENVIRONMENT=$ENVIRONMENT ou $CI_COMMIT_BRANCH"
 exit
 
 echo "change dir for aplication"
