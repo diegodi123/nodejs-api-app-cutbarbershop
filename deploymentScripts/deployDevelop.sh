@@ -8,4 +8,4 @@ DEPLOY_SERVERS=$DEPLOY_SERVERS
 
 echo "deploying to Digital Ocean production"
 
-ssh root@$DEPLOY_SERVERS 'bash' < ./updateAndRestartDevelop.sh
+ssh root@$DEPLOY_SERVERS 'bash' < ./deploymentScripts/updateAndRestartDevelop.sh
