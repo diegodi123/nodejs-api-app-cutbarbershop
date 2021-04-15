@@ -3,7 +3,7 @@
 set -e
 
 echo "change dir for aplication"
-cd nodejs-api-app-cutbarbershop-develop/
+cd nodejs-api-app-cutbarbershop-release/
 
 echo "Clone the repository"
 git pull origin develop
@@ -15,7 +15,7 @@ echo "Stoping containers"
 docker-compose down
 
 echo "Build image"
-sudo docker build -t diegodi123/cutbarbershop-dockerizado-develop:latest .
+sudo docker build -t diegodi123/cutbarbershop-dockerizado-release:latest .
 
 echo "Prune images and Containers"
 docker container prune --force
