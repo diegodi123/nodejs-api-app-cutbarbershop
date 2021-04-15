@@ -52,7 +52,7 @@ deploy_to_develop: &deploy
     - touch ~/.ssh/config
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" >> ~/.ssh/config
   script:
-    - bash ./deploymentScripts/deployDev.sh
+    - bash ./deploymentScripts/deployDevelop.sh
   environment:
     name: develop
   only:
