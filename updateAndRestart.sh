@@ -5,11 +5,11 @@ set -e
 ENVIRONMENT=$ENVIRONMENT
 CI_ENVIRONMENT_NAME=$CI_ENVIRONMENT_NAME
 
-echo "Clone the repository into $CI_ENVIRONMENT_NAME"
-git pull origin $ENVIRONMENT
-
 echo "change dir for aplication"
 cd nodejs-api-app-cutbarbershop-$CI_ENVIRONMENT_NAME/
+
+echo "Clone the repository into $CI_ENVIRONMENT_NAME"
+git pull origin $ENVIRONMENT
 
 echo "Local:"
 pwd
