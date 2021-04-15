@@ -25,7 +25,7 @@ echo "Starting containers"
 docker-compose -f docker-compose.production.yml up -d
 
 echo 'Upgrade migrations'
-docker-compose run nodejs yarn typeorm migration:run
+docker-compose -f docker-compose.production.yml run nodejs yarn typeorm migration:run
 
 echo 'Starting server'
 docker-compose run nodejs yarn dev:server

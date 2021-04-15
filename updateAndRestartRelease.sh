@@ -22,10 +22,10 @@ docker container prune --force
 docker image prune --force
 
 echo "Starting containers"
-docker-compose -f docker-compose.develop.yml up -d
+docker-compose -f docker-compose.release.yml up -d
 
 echo 'Upgrade migrations'
-docker-compose run nodejs yarn typeorm migration:run
+docker-compose -f docker-compose.release.yml run nodejs yarn typeorm migration:run
 
 echo 'Starting server'
 docker-compose run nodejs yarn dev:server
