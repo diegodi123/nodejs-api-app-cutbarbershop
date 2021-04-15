@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  nodejs:
+    image: diegodi123/cutbarbershop-dockerizado-release:latest
+    build: .
+    depends_on:
+      - db
+    networks:
+      - connection
+    ports:
+      - 3333:3333
+  db:
+    image: postgres:13.2-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data_postgres:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: docker
+    networks:
+      - connection
+networks:
+  connection:
+    driver: bridge
