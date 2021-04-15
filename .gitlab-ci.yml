@@ -52,7 +52,7 @@ deploy_to_develop: &deploy
     - touch ~/.ssh/config
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" >> ~/.ssh/config
   script:
-    - bash ./deployDev.sh
+    - bash ./deploymentScripts/deployDev.sh
   environment:
     name: develop
   only:
@@ -61,7 +61,7 @@ deploy_to_develop: &deploy
 deploy_to_release: &deploy-release
   <<: *deploy
   script:
-    - bash ./deployRelease.sh
+    - bash ./deploymentScripts/deployRelease.sh
   environment:
     name: review/$CI_COMMIT_REF_SLUG
     on_stop: turnoff
@@ -71,7 +71,7 @@ deploy_to_release: &deploy-release
 turnoff:
   <<: *deploy-release
   script:
-    - bash ./stopRelease.sh
+    - bash ./deploymentScripts/stopRelease.sh
   when: manual
   environment:
     name: review/$CI_COMMIT_REF_SLUG
@@ -80,7 +80,7 @@ turnoff:
 deploy_to_production:
   <<: *deploy
   script:
-    - bash ./deploy.sh
+    - bash ./deploymentScripts/deploy.sh
   environment:
     name: production
   only:
