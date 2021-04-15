@@ -2,15 +2,10 @@
 
 set -e
 
-echo "change dir for aplication"
-cd nodejs-api-app-cutbarbershop-release/
+DEPLOY_SERVERS=$DEPLOY_SERVERS
+ENVIRONMENT=$ENVIRONMENT
+#./disableHostKeyChecking.sh
 
-echo "Clone the repository"
-git pull origin develop
+echo "deploying to Digital Ocean production"
 
-echo "Local:"
-pwd
-
-echo "Stoping containers"
-echo "Stoping containers"
-docker-compose -f docker-compose.release.yml down
+ssh root@$DEPLOY_SERVERS 'bash' < ./stopReleaseDeployment.sh
