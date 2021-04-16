@@ -9,11 +9,11 @@ services:
     networks:
       - connection
     ports:
-      - 3333:3333
+      - 3331:3331
   db:
     image: postgres:13.2-alpine
     ports:
-      - 5434:5434
+      - 5431:5431
     volumes:
       - ./data_postgres:/var/lib/postgresql/data
     restart: always
